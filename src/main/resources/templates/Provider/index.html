@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Gestion des Provider</title>
+<link rel="stylesheet" type="text/css" th:href="@{/bootstrap/css/bootstrap.css}"/>
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+   <div>
+	<h2>Gestion des Provider</h2>
+	
+	<a href="/provider/new" type="button" class="btn btn-labeled btn-success">
+                <span class="btn-label">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+
+                </span>&nbsp;Créer Provider</a>
+   
+    </div>            
+	<br>
+	<table id="example" class="table">
+		<thead class="thead-dark">
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Address</th>
+				<th>Email</th>
+				<th>Details</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="provider : ${providers}">
+				<td th:text="${provider.id}"></td>
+				<td th:text="${provider.name}"></td>
+				<td th:text="${provider.address}"></td>
+				<td th:text="${provider.email}"></td>
+				
+				<td>
+					<a th:href="@{'/provider/edit/' + ${provider.id}}" class="btn btn-outline-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+</a>
+					&nbsp;&nbsp;&nbsp;
+					<a th:href="@{'/provider/delete/' + ${provider.id}}" class="btn btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"></i>
+</a>
+<a th:href="@{'/provider/show/' + ${provider.id}}" class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i>Details</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+</div>
+
+
+
+</body>
+</html>
